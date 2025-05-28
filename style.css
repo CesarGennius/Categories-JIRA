@@ -1,0 +1,85 @@
+
+body {
+  font-family: 'Lucida Sans Unicode', sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+main {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  max-width: 700px;
+  width: 95%;
+  margin: 0 auto 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+body.dark-mode main {
+  background: #1f1f1f;
+}
+.theme-toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+.theme-toggle button {
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  background: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-family: monospace;
+  font-size: 1rem;
+}
+.text-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  flex-grow: 1;
+  margin-right: 10px;
+}
+.copy-btn {
+  all: unset;
+  cursor: pointer;
+  font-size: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #555;
+  flex-shrink: 0;
+}
+.copy-btn:hover {
+  color: #007BFF;
+}
+.copy-btn.copied {
+  background-color: #28a745;
+  color: white;
+}
+footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: auto;
+}
+body.dark-mode footer {
+  color: #aaa;
+}
