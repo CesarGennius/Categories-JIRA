@@ -1,36 +1,45 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: 'Lucida Sans Unicode', sans-serif;
   background-color: #f5f7fa;
   color: #333;
-  margin: 0;
-  padding: 20px;
   display: flex;
-  justify-content: center;
-  min-height: 100vh;
   flex-direction: column;
+  min-height: 100vh;
+  padding: 20px;
 }
+
 body.dark-mode {
   background-color: #121212;
   color: #f0f0f0;
 }
+
 main {
   background: white;
   padding: 20px 30px;
   border-radius: 10px;
-  max-width: 700px;
-  width: 95%;
+  max-width: 100%;
+  width: 100%;
   margin: 0 auto 20px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-sizing: border-box;
 }
+
 body.dark-mode main {
   background: #1f1f1f;
 }
+
 .theme-toggle {
   display: flex;
   justify-content: center;
   margin-bottom: 15px;
 }
+
 .theme-toggle button {
   padding: 8px 16px;
   font-size: 0.95rem;
@@ -40,20 +49,53 @@ body.dark-mode main {
   border-radius: 6px;
   cursor: pointer;
 }
+
 .item {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 12px;
   font-family: monospace;
   font-size: 1rem;
+  flex-wrap: nowrap;
+  gap: 8px;
 }
+
 .text-container {
   overflow-x: auto;
   white-space: nowrap;
   flex-grow: 1;
-  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  min-width: 0;
 }
+
+.editable-code {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-family: monospace;
+  font-size: 1rem;
+  width: 70px;
+  text-align: center;
+  cursor: pointer;
+  margin: 0 4px;
+  padding: 2px 4px;
+  transition: background-color 0.2s, border 0.2s;
+}
+
+.editable-code:focus {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: text;
+}
+
+body.dark-mode .editable-code:focus {
+  background: #333;
+  border-color: #777;
+}
+
 .copy-btn {
   all: unset;
   cursor: pointer;
@@ -66,20 +108,33 @@ body.dark-mode main {
   align-items: center;
   color: #555;
   flex-shrink: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 .copy-btn:hover {
   color: #007BFF;
 }
+
 .copy-btn.copied {
   background-color: #28a745;
   color: white;
+  animation: fadeOut 1.2s ease-in-out forwards;
 }
+
+@keyframes fadeOut {
+  0%   { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 footer {
   text-align: center;
   font-size: 0.9rem;
   color: #777;
   margin-top: auto;
+  padding: 20px 0 0;
 }
+
 body.dark-mode footer {
   color: #aaa;
 }
