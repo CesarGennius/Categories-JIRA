@@ -8,16 +8,19 @@
 </head>
 <body>
   <div class="theme-toggle">
-    <button id="themeBtn" onclick="toggleTheme()">🌙 Modo Oscuro</button>
+    <button id="themeBtn" type="button">🌙 Modo Oscuro</button>
   </div>
 
   <main>
-    <h1>Listado De Tareas</h1>
+    <h1>Listado de Tareas</h1>
+
+    <input id="searchInput" type="search" placeholder="Buscar…" aria-label="Buscar tareas" />
+
     <div id="list-container"></div>
   </main>
 
   <footer>
-    © César Téllez – Todos los derechos reservados
+    © César Téllez – Todos los derechos reservados
   </footer>
 
   <script src="script.js"></script>

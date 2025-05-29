@@ -1,37 +1,57 @@
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+/* ─────── Paleta base con variables ─────── */
+:root {
+  /* Fondo y texto */
+  --bg: #f5f7fa;
+  --fg: #333;
+  --card: #ffffff;
+
+  /* Colores de categoría – Tema claro */
+  --cat-error:        #b71c1c;
+  --cat-tech:         #004d40;
+  --cat-functional:   #0d47a1;
+  --cat-user:         #1b5e20;
+  --cat-incident:     #4a148c;
+  --cat-special:      #e65100;
+  --cat-cross:        #880e4f;
 }
 
+body.dark-mode {
+  --bg: #121212;
+  --fg: #f0f0f0;
+  --card: #1f1f1f;
+
+  /* Colores de categoría – Tema oscuro */
+  --cat-error:        #ff8a80;
+  --cat-tech:         #80cbc4;
+  --cat-functional:   #82b1ff;
+  --cat-user:         #a5d6a7;
+  --cat-incident:     #ea80fc;
+  --cat-special:      #ffcc80;
+  --cat-cross:        #ff80ab;
+}
+
+/* ─────── Reset básico ─────── */
+html, body { height: 100%; margin: 0; padding: 0; }
 body {
   font-family: 'Lucida Sans Unicode', sans-serif;
-  background-color: #f5f7fa;
-  color: #333;
+  background: var(--bg);
+  color: var(--fg);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   padding: 20px;
-}
-
-body.dark-mode {
-  background-color: #121212;
-  color: #f0f0f0;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 main {
-  background: white;
+  background: var(--card);
   padding: 20px 30px;
   border-radius: 10px;
   max-width: 100%;
   width: 100%;
   margin: 0 auto 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   box-sizing: border-box;
-}
-
-body.dark-mode main {
-  background: #1f1f1f;
 }
 
 .theme-toggle {
@@ -43,12 +63,26 @@ body.dark-mode main {
 .theme-toggle button {
   padding: 8px 16px;
   font-size: 0.95rem;
-  background: #007BFF;
-  color: white;
+  background: #007bff;
+  color: #ffffff;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  transition: background-color 0.25s;
 }
+.theme-toggle button:hover { background: #0069d9; }
+
+#searchInput {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 14px;
+  margin: 0 0 18px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.2s;
+}
+#searchInput:focus { outline: none; border-color: #007bff; }
 
 .item {
   display: flex;
@@ -57,16 +91,14 @@ body.dark-mode main {
   margin-bottom: 12px;
   font-family: monospace;
   font-size: 1rem;
-  flex-wrap: nowrap;
   gap: 8px;
+  color: var(--fg); /* se sobrescribe por categoría */
 }
 
 .text-container {
   overflow-x: auto;
   white-space: nowrap;
   flex-grow: 1;
-  display: flex;
-  align-items: center;
   min-width: 0;
 }
 
@@ -74,7 +106,7 @@ body.dark-mode main {
   background: transparent;
   border: none;
   color: inherit;
-  font-family: monospace;
+  font-family: inherit;
   font-size: 1rem;
   width: 70px;
   text-align: center;
@@ -83,17 +115,15 @@ body.dark-mode main {
   padding: 2px 4px;
   transition: background-color 0.2s, border 0.2s;
 }
-
 .editable-code:focus {
-  background: #fff;
+  background: #ffffff;
   border: 1px solid #ccc;
   border-radius: 4px;
   cursor: text;
 }
-
 body.dark-mode .editable-code:focus {
-  background: #333;
-  border-color: #777;
+  background: #333333;
+  border-color: #777777;
 }
 
 .copy-btn {
@@ -107,24 +137,17 @@ body.dark-mode .editable-code:focus {
   justify-content: center;
   align-items: center;
   color: #555;
-  flex-shrink: 0;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-
-.copy-btn:hover {
-  color: #007BFF;
-}
-
+.copy-btn:hover { color: #007bff; }
 .copy-btn.copied {
   background-color: #28a745;
-  color: white;
+  color: #ffffff;
   animation: fadeOut 1.2s ease-in-out forwards;
 }
-
 @keyframes fadeOut {
-  0%   { opacity: 1; }
-  90%  { opacity: 1; }
-  100% { opacity: 0; }
+  0%, 90% { opacity: 1; }
+  100%    { opacity: 0; }
 }
 
 footer {
@@ -134,7 +157,13 @@ footer {
   margin-top: auto;
   padding: 20px 0 0;
 }
+body.dark-mode footer { color: #aaa; }
 
-body.dark-mode footer {
-  color: #aaa;
-}
+/* ─────── Colores por categoría (usa var según tema) ─────── */
+.item[data-category="Error Troubleshooting"]          { color: var(--cat-error); }
+.item[data-category="Technical Analysis"]            { color: var(--cat-tech); }
+.item[data-category="Functional Support"]            { color: var(--cat-functional); }
+.item[data-category="User Request Handling"]         { color: var(--cat-user); }
+.item[data-category="Incident Resolution"]           { color: var(--cat-incident); }
+.item[data-category="Specialized Support Escalation"]{ color: var(--cat-special); }
+.item[data-category="Cross-Department Consultation"] { color: var(--cat-cross); }
