@@ -15,6 +15,7 @@ const listItems = [
   'Functional Support - [FD 000000] - Cancelación Tarjeta Virtual',
   'Functional Support - [FD 000000] - Reverso Split Payment',
   'Functional Support - [FD 000000] - Reverso Compra de Miles',
+  'Functional Support - [FD 000000] - Reverso Transacción Universal (Fraude)',
   'User Request Handling - [FD 000000] - Descripción',
   'User Request Handling - [FD 000000] - Asociación de Pago',
   'User Request Handling - [FD 000000] - Cancelación de Certificados',
@@ -26,6 +27,7 @@ const listItems = [
   'Incident Resolution - [FD 000000] - Reunión Soporte (Temas Tratados)',
   'Specialized Support Escalation - [FD 000000] - Descripción',
   'Cross-Department Consultation - [FD 000000] - Descripción',
+  'Announcements/Training by Gennius - [FD 000000] - Descripción'
 ];
 
 /* ---------------- Elementos DOM ---------------- */
